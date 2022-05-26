@@ -5,7 +5,7 @@ class FirstPageExceptionIndicator extends StatelessWidget {
   const FirstPageExceptionIndicator({
     required this.title,
     this.message,
-    this.label,
+    required this.label,
     this.onTryAgain,
     Key? key,
   }) : super(key: key);

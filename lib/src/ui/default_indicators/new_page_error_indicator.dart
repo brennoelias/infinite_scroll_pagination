@@ -4,7 +4,7 @@ import 'package:infinite_scroll_pagination/src/ui/default_indicators/footer_tile
 class NewPageErrorIndicator extends StatelessWidget {
   const NewPageErrorIndicator({
     Key? key,
-    this.message = ''
+    this.message = '',
     this.onTap,
   }) : super(key: key);
 

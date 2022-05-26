@@ -19,7 +19,7 @@ class FirstPageErrorIndicator extends StatelessWidget {
   Widget build(BuildContext context) => FirstPageExceptionIndicator(
         title: title,
         message: message,
-        label: label
+        label: label,
         onTryAgain: onTryAgain,
       );
 }
