@@ -5,12 +5,14 @@ class FirstPageExceptionIndicator extends StatelessWidget {
   const FirstPageExceptionIndicator({
     required this.title,
     this.message,
+    this.label,
     this.onTryAgain,
     Key? key,
   }) : super(key: key);
 
   final String title;
   final String? message;
+  final String label;
   final VoidCallback? onTryAgain;
 
   @override
@@ -49,8 +51,8 @@ class FirstPageExceptionIndicator extends StatelessWidget {
                     Icons.refresh,
                     color: Colors.white,
                   ),
-                  label: const Text(
-                    'Try Again',
+                  label: Text(
+                    label,
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.white,

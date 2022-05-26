@@ -11,6 +11,8 @@ import 'package:infinite_scroll_pagination/src/ui/default_indicators/no_items_fo
 import 'package:infinite_scroll_pagination/src/utils/listenable_listener.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
+import 'internationalization.dart';
+
 typedef CompletedListingBuilder = Widget Function(
   BuildContext context,
   IndexedWidgetBuilder itemWidgetBuilder,
@@ -50,6 +52,7 @@ class PagedSliverBuilder<PageKeyType, ItemType> extends StatefulWidget {
     required this.errorListingBuilder,
     required this.completedListingBuilder,
     this.shrinkWrapFirstPageIndicators = false,
+    required this.internationalizationHelper,
     Key? key,
   }) : super(key: key);
 
@@ -82,6 +85,8 @@ class PagedSliverBuilder<PageKeyType, ItemType> extends StatefulWidget {
   /// Defaults to false.
   final bool shrinkWrapFirstPageIndicators;
 
+  final InternationalizationHelper internationalizationHelper;
+
   @override
   _PagedSliverBuilderState<PageKeyType, ItemType> createState() =>
       _PagedSliverBuilderState<PageKeyType, ItemType>();
@@ -101,6 +106,11 @@ class _PagedSliverBuilderState<PageKeyType, ItemType>
   WidgetBuilder get _firstPageErrorIndicatorBuilder =>
       _builderDelegate.firstPageErrorIndicatorBuilder ??
       (_) => FirstPageErrorIndicator(
+            label: widget.internationalizationHelper.tryAgainText,
+            title:
+                widget.internationalizationHelper.firstPageErrorIndicatorTitle,
+            message: widget
+                .internationalizationHelper.firstPageErrorIndicatorMessage,
             onTryAgain: _pagingController.retryLastFailedRequest,
           );
 
@@ -120,7 +130,12 @@ class _PagedSliverBuilderState<PageKeyType, ItemType>
 
   WidgetBuilder get _noItemsFoundIndicatorBuilder =>
       _builderDelegate.noItemsFoundIndicatorBuilder ??
-      (_) => NoItemsFoundIndicator();
+      (_) => NoItemsFoundIndicator(
+            message:
+                widget.internationalizationHelper.noItemsFoundIndicatorMessage,
+            title: widget.internationalizationHelper.noItemsFoundIndicatorTitle,
+            label: widget.internationalizationHelper.tryAgainText,
+          );
 
   WidgetBuilder? get _noMoreItemsIndicatorBuilder =>
       _builderDelegate.noMoreItemsIndicatorBuilder;

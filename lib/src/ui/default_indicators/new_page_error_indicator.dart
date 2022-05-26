@@ -4,8 +4,11 @@ import 'package:infinite_scroll_pagination/src/ui/default_indicators/footer_tile
 class NewPageErrorIndicator extends StatelessWidget {
   const NewPageErrorIndicator({
     Key? key,
+    this.message = ''
     this.onTap,
   }) : super(key: key);
+
+  final String message;
   final VoidCallback? onTap;
 
   @override
@@ -14,15 +17,15 @@ class NewPageErrorIndicator extends StatelessWidget {
         child: FooterTile(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               Text(
-                'Something went wrong. Tap to try again.',
+                message,
                 textAlign: TextAlign.center,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 4,
               ),
-              Icon(
+              const Icon(
                 Icons.refresh,
                 size: 16,
               ),

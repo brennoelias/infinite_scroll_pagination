@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:breaking_bapp/character_summary.dart';
 import 'package:http/http.dart' as http;
 
+import 'character_summary.dart';
+
 // ignore: avoid_classes_with_only_static_members
 class RemoteApi {
   static Future<List<CharacterSummary>> getCharacterList(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:infinite_scroll_pagination/src/ui/internationalization.dart';
 import 'package:mockito/mockito.dart';
 
 import 'utils/paging_controller_utils.dart';
@@ -242,6 +243,7 @@ Future<void> _pumpPagedSliverList({
                         ? (context) => noMoreItemsIndicator
                         : null,
                   ),
+                  internationalizationHelper: InternationalizationHelper(),
                 )
               else
                 PagedSliverList.separated(
@@ -260,6 +262,7 @@ Future<void> _pumpPagedSliverList({
                         : null,
                   ),
                   separatorBuilder: separatorBuilder,
+                  internationalizationHelper: InternationalizationHelper(),
                 ),
             ],
           ),
